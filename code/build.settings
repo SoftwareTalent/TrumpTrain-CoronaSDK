@@ -1,0 +1,187 @@
+settings =
+{
+  plugins = {
+  
+   ["CoronaProvider.native.popup.social"] =
+        {
+            publisherId = "com.coronalabs"
+        },
+  ["CoronaProvider.gameNetwork.apple"] =
+    {
+      -- required
+      publisherId = "com.coronalabs",
+      supportedPlatforms = { iphone=true, ["iphone-sim"]=true },
+    },
+ 
+    ["CoronaProvider.gameNetwork.google"] =
+     {
+        publisherId = "com.coronalabs",
+        supportedPlatforms = { android = true },
+     },
+    
+    ["plugin.google.play.services"] =
+        {
+            publisherId = "com.coronalabs"
+        },
+
+    ["plugin.facebook.v4"] =
+    {
+        -- required
+        publisherId = "com.coronalabs",
+    },
+    ["plugin.chartboost"] =
+    {
+        publisherId = "com.swipeware",
+    },
+
+  --[[remove this line to implement tapfortap
+    ["plugin.tapfortap"] =
+    {
+            -- required
+       publisherId = "com.tapfortap",
+    },
+  ]] --remove this line to implement tapfortap
+    
+
+  --[[ remove this line to implement AdBuddiz
+    ["plugin.adbuddiz"] =
+        {
+            -- required
+            publisherId = "com.adbuddiz",
+        },
+     ]]-- remove this line to implement AdBuddiz
+
+  --[[remove this line to implement inMobi
+     ["CoronaProvider.ads.inmobi"] =
+        {
+            publisherId = "com.coronalabs",
+        },
+     ]]-- remove this line to implement inMobi
+
+  --[[remove this line to implement inneractive
+     ["CoronaProvider.ads.inneractive"] =
+        {
+            publisherId = "com.inner-active",
+        },
+     ]]--remove this line to implement inneractive
+ 
+  --[[remove this line to implement Vungle
+     ["CoronaProvider.ads.vungle"] =
+        {
+            publisherId = "com.vungle",
+        },
+     ]]--remove this line to implement Vungle
+
+  --[[remove this line to implement iAds
+    ["CoronaProvider.ads.iads"] =
+    {
+       -- required
+       publisherId = "com.coronalabs",
+    },
+    ]] --remove this line to implement iAds
+     
+ --[[remove this line to implement playhaven
+    ["plugin.playhaven"] =
+    {
+      -- required
+      publisherId = "com.playhaven",
+    },
+    ]] --remove this line to implement playhaven
+
+    
+
+  },
+	orientation =
+	{
+		default = "portrait",
+		supported = { "portrait" }
+	},
+	android =
+	{
+    googlePlayGamesAppId = "XXXXXXXX",  --insert your app id number for google game services
+		usesPermissions =
+		{
+      "com.android.vending.BILLING", --remove this line if you don't use iAP
+			"android.permission.INTERNET",
+      "android.permission.ACCESS_NETWORK_STATE",
+     --[[remove this line if you use admob and not chartboost
+      "android.permission.READ_PHONE_STATE" 
+      ]]--remove this line if you use admob and not chartboost
+		},
+	},
+	iphone =
+	{
+		plist =
+		{
+
+       NSAppTransportSecurity = 
+            {
+                NSExceptionDomains = 
+                {
+                    ["fbcdn.net"] = 
+                    {
+                        NSIncludesSubdomains = true,
+                        NSExceptionRequiresForwardSecrecy = false,
+                    },
+                    ["facebook.com"] = 
+                    {
+                        NSIncludesSubdomains = true,
+                        NSExceptionRequiresForwardSecrecy = false,
+                    },
+                    ["akamaihd.net"] = 
+                    {
+                        NSIncludesSubdomains = true,
+                        NSExceptionRequiresForwardSecrecy = false,
+                    },
+                },
+            },
+
+            -- Whitelist Facebook Apps
+            LSApplicationQueriesSchemes = 
+            {
+                "fb",
+                "fbapi20130214",
+                "fbapi20130410",
+                "fbapi20140410",
+                "fbapi20140116",
+                "fbapi20150313",
+                "fbapi20150629",
+                "fbauth",
+                "fbauth2",
+                "fb-messenger-api20140430",
+            },
+			CFBundleIconFile = "Icon.png",
+			CFBundleIconFiles =
+			{
+                "Icon.png", 
+                "Icon@2x.png", 
+                "Icon-60.png",
+                "Icon-60@2x.png",
+                "Icon-72.png", 
+                "Icon-72@2x.png",
+                "Icon-76.png",
+                "Icon-76@2x.png", 
+                "Icon-Small.png", 
+                "Icon-Small@2x.png",
+                "Icon-Small-40.png",
+                "Icon-Small-40@2x.png",
+                "Icon-Small-50.png", 
+                "Icon-Small-50@2x.png", 
+			},
+			UIApplicationExitsOnSuspend = false,	-- must be false for single sign-on to work
+			FacebookAppID = "1578929369028937",	-- replace XXXXXXXXX with your facebook appId
+      CFBundleIdentifier = "com.appgroupint.trumptrain", -- Apple's GameCenter Example (GKTapper)
+      CFBundleVersion = "1.1",
+
+			CFBundleURLTypes =
+			{
+				{
+					CFBundleURLSchemes =
+					{
+						"fb1578929369028937",	-- replace XXXXXXXXX with your facebook appId, make sure that you leave fb in front of it				
+					}
+				}
+			}
+		}
+	}
+}
